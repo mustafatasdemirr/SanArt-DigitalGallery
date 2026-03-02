@@ -5,7 +5,7 @@
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
 
-> **[🔗 Canlı Galeriyi Ziyaret Et (Live Demo)](#)** > *(Not: GitHub Pages linkini buraya yapıştırabilirsin)*
+> **[🔗 Canlı Galeriyi Ziyaret Et (Live Demo)](https://mustafatasdemirr.github.io/SanArt-DigitalGallery/)**
 
 **SanArt**, edebiyat ve sanat tutkunları için tasarlanmış, gerçek zamanlı veri akışına sahip interaktif bir dijital anı duvarıdır. Van Gogh'un "Yıldızlı Gece" eserinden ilham alan temasıyla, kullanıcıların şiir ve notlarını bir sanat galerisi atmosferinde paylaşmasını sağlar.
 
