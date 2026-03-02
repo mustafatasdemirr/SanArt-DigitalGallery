@@ -1,0 +1,360 @@
+/* --- GENEL AYARLAR --- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff; /* Yazılar beyaz olsun ki resim üstünde okunsun */
+}
+/* --- TÜM SAYFA İÇİN YUMUŞAK KAYDIRMA (SMOOTH SCROLL) --- */
+html {
+    scroll-behavior: smooth;
+} 
+
+/* --- ORTAK RESİM AYARLARI (Parallax Efekti) --- */
+.hero-section, #poetry-section {
+    position: relative;
+    background-attachment: fixed; /* Resim sabit kalır, içerik kayar (Sihirli kod) */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+/* --- BÖLÜMLER ARASI YUMUŞAK GEÇİŞ (SİHİRLİ KISIM) --- */
+/* İki bölümün arasına keskin çizgi girmesin diye gradient (gölge erimesi) ekledik */
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Üst kısımlar normal siyah tül, aşağı indikçe diğer resimle kaynaşmak için koyulaşır */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 75%, rgba(15, 15, 15, 0.98) 100%);
+    z-index: -1;
+}
+
+#poetry-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Diğer resimden gelen karanlığı devralır ve yavaşça normal siyah tüle geri döner */
+    background: linear-gradient(to bottom, rgba(15, 15, 15, 0.98) 0%, rgba(0, 0, 0, 0.5) 15%);
+    z-index: -1;
+}
+
+/* --- 1. BÖLÜM: SAYAÇ (KAPAK) --- */
+.hero-section {
+    /* BURAYA KAPAK RESMİNİN ADI GELECEK */
+    background-image: url('kapak.jpg'); 
+    min-height: 100vh; /* Tam ekran kapla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.main-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease;
+}
+
+.sub-title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+/* SAYAÇ KUTULARI - CAM EFEKTİ */
+.time-box {
+    background: rgba(255, 255, 255, 0.15); /* Çok şeffaf beyaz */
+    backdrop-filter: blur(2px); /* Buzlu cam */
+    -webkit-backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px 25px;
+    border-radius: 15px;
+    min-width: 100px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.time-box:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.time-box span {
+    display: block;
+    font-size: 2.5rem;
+    font-family: 'Dancing Script', cursive;
+}
+
+/* --- 2. BÖLÜM: ANI DUVARI --- */
+#poetry-section {
+    /* BURAYA DUVAR RESMİNİN ADI GELECEK */
+    background-image: url('duvar.jpg');
+    padding: 80px 0;
+    min-height: 100vh;
+}
+
+.section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 40px;
+}
+
+/* --- FORM KARTI VE ŞİİRLER (CAM EFEKTİ DEVAM EDİYOR) --- */
+.card {
+    background: rgba(0, 0, 0, 0.4); /* Koyu Cam Efekti */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    color: white; /* Kart içindeki yazılar beyaz */
+}
+
+/* Form kutularını da şeffaf yapalım */
+.form-control {
+    background: rgba(255, 255, 255, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    box-shadow: none;
+    border-color: #e73c7e;
+}
+
+/* Buton */
+.btn-danger {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+}
+
+/* Şiir Kartları */
+.poem-card {
+    border: none;
+    transition: transform 0.3s;
+}
+.poem-card:hover {
+    transform: translateY(-10px);
+}
+.card-title {
+    color: #ffd700; /* Başlıklar altın sarısı */
+}
+
+/* --- FOOTER TASARIMI --- */
+.footer-section {
+    position: relative;
+    z-index: 10;
+}
+
+.glass-footer {
+    /* Koyu Cam Efekti */
+    background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Kenarlık ve Şekil */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px; /* Tam oval (hap) şekli */
+    
+    /* Yazı ve Gölge */
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease; /* Yumuşak geçiş */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Üzerine gelince (Hover) efekti */
+.glass-footer:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-5px); /* Hafif yukarı kalkar */
+    box-shadow: 0 15px 35px rgba(221, 36, 118, 0.4); /* Pembe neon gölge çıkar */
+    border-color: rgba(221, 36, 118, 0.5);
+}
+
+.footer-date {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 5px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+}
+
+.fa-heart {
+    animation: heartbeat 1.5s infinite;
+}
+
+/* Kalp Atış Animasyonu */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.3); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Animasyon */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* --- DOSYA YÜKLEME BUTONU DÜZENLEMESİ --- */
+
+/* Giriş alanının kendisi için ekstra ayar (yazının ortalanması için) */
+#imageFile {
+    padding-top: 8px; /* Üstten biraz boşluk */
+    height: auto; /* Yüksekliği içeriğe göre ayarla */
+}
+
+/* "Dosya Seç" butonunun kendisi (Sihirli kısım burası) */
+#imageFile::-webkit-file-upload-button {
+    visibility: hidden; /* Varsayılan butonu gizle */
+    width: 0; /* Yer kaplamasın */
+}
+
+/* Kendi özel butonumuzu oluşturuyoruz */
+#imageFile::before {
+    content: 'Dosya Seç'; /* Butonun üzerinde yazacak yazı */
+    display: inline-block;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b); /* Kırmızı gradyan (Diğer butonla uyumlu) */
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 500;
+    color: white;
+    margin-right: 10px; /* "Dosya seçilmedi" yazısıyla arasına boşluk */
+    box-shadow: 0 2px 5px rgba(255, 65, 108, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Üzerine gelince (Hover) efekti */
+#imageFile:hover::before {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 65, 108, 0.5);
+}
+
+/* --- MÜZİK ÇALAR BUTONU --- */
+.music-control {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.6); /* Koyu Cam */
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.music-control:hover {
+    transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.8);
+    border-color: #ff4b2b;
+}
+
+.music-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    animation: none; /* Başlangıçta dönmüyor */
+}
+
+/* Şarkı Çalarken Dönecek */
+.music-icon.playing {
+    animation: spin 3s linear infinite;
+    box-shadow: 0 0 15px rgba(255, 75, 43, 0.8);
+}
+
+.music-text {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.heart-rain {
+    position: fixed;
+    bottom: -50px; /* Ekranın altından başlasın */
+    color: #ff4b2b; /* Kırmızı Kalp */
+    font-size: 24px;
+    z-index: 9999; /* Her şeyin üstünde */
+    animation: floatUp 4s linear forwards; /* Yukarı uçma animasyonu */
+    opacity: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Hemen görünsün */
+    }
+    100% { 
+        transform: translateY(-100vh) scale(1.5); /* Ekranın tepesine kadar çıksın */
+        opacity: 0; /* Kaybolsun */
+    }
+}
+
+/* --- UZUN ŞİİR DÜZENLEMESİ --- */
+
+/* Kartın içindeki yazı alanı */
+.card-text {
+    max-height: 160px; /* Yazı alanı en fazla bu kadar uzasın */
+    overflow-y: auto;  /* Eğer yazı sığmazsa aşağı kaydırma açılsın */
+    white-space: pre-wrap;
+    /* Okunabilirlik için */
+    padding-right: 5px; 
+    font-weight: 500;
+    line-height: 1.5;
+    
+    /* Kaydırma çubuğunu gizle (Telefonda parmakla kayar ama çubuk görünmez - ÇOK ÖNEMLİ) */
+    -ms-overflow-style: none;  /* IE ve Edge için */
+    scrollbar-width: none;  /* Firefox için */
+}
+
+/* Chrome ve Safari için kaydırma çubuğunu gizleme */
+.card-text::-webkit-scrollbar {
+    display: none;
+}
+
+/* Scrollbar (Kaydırma Çubuğu) */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #333; }
+::-webkit-scrollbar-thumb { background: #ff4b2b; border-radius: 5px; }
